@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+enum Situation {
+  CASA
+  ROCA
+  ELIMINATED
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Peao {
+  id        Int       @id @default(autoincrement())
+  name      String
+  age       Int
+  situation Situation
+
+  pg_eliminated Float @default(0)
+
+  Roca   Roca?   @relation(fields: [rocaId], references: [id])
+  rocaId String?
+
+  Eliminated Eliminated?
+}
+
+model Roca {
+  id   String @id @default(uuid())
+  nome String
+
+  peoes Peao[]
+
+  Eliminated Eliminated?
+}
+
+model Eliminated {
+  id String @id @default(uuid())
+
+  peao   Peao @relation(fields: [peaoId], references: [id])
+  peaoId Int  @unique
+
+  roca   Roca   @relation(fields: [rocaId], references: [id])
+  rocaId String @unique
+
+  pg_eliminated Float
+}
