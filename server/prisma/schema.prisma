@@ -4,7 +4,7 @@
 enum Situation {
   CASA
   ROCA
-  ELIMINATED
+  ELIMINADO
 }
 
 generator client {
