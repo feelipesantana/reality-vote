@@ -1,9 +1,18 @@
 import { PrismaPeaoRepository } from "../../repositories/prisma/PrismaPeaoRepository";
-import { PeaoUseCase } from "../PeaoUseCase";
+import { CreatePeaoUseCase } from "../create-peao-use-case";
+import { UpdatePeaoUseCase } from "../update-peao-use-case";
 
-export function PeaoFactory(){
+export function CreatePeaoFactory(){
   const prismaPeaoRepository = new PrismaPeaoRepository()
-  const peaoRepository = new PeaoUseCase(prismaPeaoRepository)
+  const peaoRepository = new CreatePeaoUseCase(prismaPeaoRepository)
+
+  return peaoRepository
+}
+
+
+export function UpdatePeaoFactory(){
+  const prismaPeaoRepository = new PrismaPeaoRepository()
+  const peaoRepository = new UpdatePeaoUseCase(prismaPeaoRepository)
 
   return peaoRepository
 }

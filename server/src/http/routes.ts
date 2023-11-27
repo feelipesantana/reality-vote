@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
-import { CreatePeaoControlle } from "./controllers/PeaoController";
+import { CreatePeaoControlle,UpdatePeaoController } from "./controllers/PeaoController";
 
 export async function appRoutes(app: FastifyInstance){
   app.post("/peao", CreatePeaoControlle)
+  app.post("/update/peao", UpdatePeaoController)
 }

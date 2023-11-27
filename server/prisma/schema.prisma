@@ -17,12 +17,12 @@ datasource db {
 }
 
 model Peao {
-  id        Int       @id @default(autoincrement())
-  name      String
-  age       Int
-  situation Situation
-
-  pg_eliminated Float @default(0)
+  id            Int       @id @default(autoincrement())
+  name          String
+  age           Int
+  image         String
+  situation     Situation
+  pg_eliminated Float     @default(0)
 
   Roca   Roca?   @relation(fields: [rocaId], references: [id])
   rocaId String?
@@ -31,11 +31,8 @@ model Peao {
 }
 
 model Roca {
-  id   String @id @default(uuid())
-  nome String
-
-  peoes Peao[]
-
+  id         String      @id @default(uuid())
+  peoes      Peao[]
   Eliminated Eliminated?
 }
 
