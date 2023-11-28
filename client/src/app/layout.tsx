@@ -20,17 +20,19 @@ export default function RootLayout({
       <body
         className={`${inter.className} w-screen h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-blue-950`}
       >
-        <div className="grid grid-cols-2 h-full">
-          <header className="h-10 border border-gray-100/10 flex items-center justify-center text-gray-300 font-extrabold">
+        <div className="flex flex-col h-full">
+          <header className="text-xl h-10 border border-gray-100/10 flex items-center justify-center text-gray-300 font-extrabold">
             Votação Reality
           </header>
 
           <div className="flex flex-1">
             <Aside />
-            <main>{children}</main>
+            <main className="w-full">{children}</main>
           </div>
+          <footer className="h-10 border border-gray-100/10 flex items-center justify-center text-xs text-gray-300 font-extrabold">
+            Feito com ❤️ by Felipe Santana{" "}
+          </footer>
         </div>
-        <footer className="h-10">Footer</footer>
       </body>
     </html>
   );

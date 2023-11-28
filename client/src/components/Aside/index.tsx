@@ -18,17 +18,40 @@ async function getPeoes() {
 export async function Aside() {
   const result: FetchPeoesType = await getPeoes();
   return (
-    <aside className="border h-full">
+    <aside className="border-r border-gray-100/10 h-full w-[500px] py-10 px-4">
       <div>
-        <h1>Sidebar</h1>
-        <button>Criar Peao</button>
-        <button>Criar Roca</button>
-        <div>
-          <h3>Lista de Peaos</h3>
-          <ul>
-            {result.map((item) => (
-              <li key={item.id}>{item.name}</li>
-            ))}
+        <h1 className="font-semibold text-center text-white/50">
+          Configurações{" "}
+        </h1>
+        <div className="flex items-center justify-center gap-4 mt-10">
+          <button className="bg-green-800 text-white mx-auto px-10 py-2 rounded-[16px]">
+            Criar Peao
+          </button>
+          <button className="bg-red-800 text-white mx-auto px-10 py-2 rounded-[16px]">
+            Criar Roca
+          </button>
+        </div>
+        <div className="mt-20 flex flex-col items-center justify-center">
+          <h3 className="font-semibold text-center text-white/50">
+            Lista de Peaos
+          </h3>
+          <ul className="mx-auto flex flex-col justify-center  text-white w-full mt-2">
+            <div className="flex border border-white/10 w-full mb-4">
+              <li className="text-center w-[33%] ">Id</li>
+              <li className="text-center w-[33%] ">Nome</li>
+              <li className="text-center w-[33%]">Idade</li>
+              <li className="text-center w-[33%]">Situação</li>
+            </div>
+            {result.map((item) => {
+              return (
+                <div className="flex w-full " key={item.id}>
+                  <li className="text-center w-[33%] ">{item.id}</li>
+                  <li className="text-center w-[33%] ">{item.name}</li>
+                  <li className="text-center w-[33%]">{item.age}</li>
+                  <li className="text-center w-[33%]">{item.situation}</li>
+                </div>
+              );
+            })}
           </ul>
         </div>
       </div>
