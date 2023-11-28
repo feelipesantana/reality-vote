@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface PeoesType {
   id: number;
   name: string;
@@ -24,9 +26,12 @@ export async function Aside() {
           Configurações{" "}
         </h1>
         <div className="flex items-center justify-center gap-4 mt-10">
-          <button className="bg-green-800 text-white mx-auto px-10 py-2 rounded-[16px]">
+          <Link
+            href="/peao"
+            className="bg-green-800 text-white mx-auto px-10 py-2 rounded-[16px]"
+          >
             Criar Peao
-          </button>
+          </Link>
           <button className="bg-red-800 text-white mx-auto px-10 py-2 rounded-[16px]">
             Criar Roca
           </button>
