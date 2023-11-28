@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { number, z } from "zod";
-import { CreatePeaoFactory, UpdatePeaoFactory } from "../../use-cases/factory/PeaoFactory";
+import { CreatePeaoFactory, FindManyPeaosFactory, UpdatePeaoFactory } from "../../use-cases/factory/PeaoFactory";
 
 
 enum Situation {
@@ -41,16 +41,15 @@ export async function UpdatePeaoController(request: FastifyRequest, reply: Fasti
   const createBodySchema = z.object({
     id:number(),
     situation: z.nativeEnum(Situation),
+    rocaId:z.string()
   })
 
-  const {id, situation } = createBodySchema.parse(request.body)
-
- 
+  const {id, situation,rocaId } = createBodySchema.parse(request.body)
 
   try{
     const updatePeaoUseCase = UpdatePeaoFactory();
 
-    const updatedPeao = await updatePeaoUseCase.execute({id,situation})
+    const updatedPeao = await updatePeaoUseCase.execute({id,situation,rocaId})
 
     return reply.status(200).send(updatedPeao);
 
@@ -60,4 +59,19 @@ export async function UpdatePeaoController(request: FastifyRequest, reply: Fasti
     return reply.status(500).send()
   }
 
+}
+
+export async function FindManyPeoesConroller(request: FastifyRequest, reply: FastifyReply){
+  try{
+    const findPeoes = FindManyPeaosFactory();
+
+    const updatedPeao = await findPeoes.execute()
+
+    return reply.status(200).send(updatedPeao);
+
+  }catch(err){
+    
+    console.error(err)
+    return reply.status(500).send()
+  }
 }
