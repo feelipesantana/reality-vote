@@ -21,7 +21,7 @@ export default function Peao() {
     try {
       const response = await api.post("/peao", payload);
       if (response.status === 201) {
-        console.log("Criado com sucesso");
+        console.log("1Criado com sucesso");
       } else {
         console.error("Erro");
       }
