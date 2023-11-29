@@ -14,7 +14,7 @@ export async function CreatePeaoControlle(request: FastifyRequest, reply: Fastif
   const createBodySchema = z.object({
     name: z.string(),
     age: z.number(),
-    image: z.string(),
+    image: z.string().optional() ,
     situation: z.nativeEnum(Situation),
   })
 

@@ -5,11 +5,12 @@ import { PeaoRepository } from "../PeaoRepository";
 export class PrismaPeaoRepository implements PeaoRepository{
 
   async create({name, age, situation, image}: Prisma.PeaoCreateInput): Promise<Peao> {
+    
       const createPeao = prisma.peao.create({
         data:{
           name,
           age,
-          image,
+          image: image? image : "",
           situation
         }
       })

@@ -33,6 +33,7 @@ model Peao {
 model Roca {
   id         String      @id @default(uuid())
   peoes      Peao[]
+  isOpen     Boolean     @default(true)
   Eliminated Eliminated?
 }
 

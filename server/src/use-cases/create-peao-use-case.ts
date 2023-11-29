@@ -5,7 +5,7 @@ interface PeaoUseCaseRequest{
   name:string
   age:number
   situation: Situation,
-  image: string
+  image?: string
 }
 
 type PeaoUseCaseResponse = Peao
@@ -21,7 +21,7 @@ export class CreatePeaoUseCase{
       const createPeao = await this.peaoRepository.create({
         name,
         age,
-        image,
+        image: image ? image : "",
         situation,
         
       })
