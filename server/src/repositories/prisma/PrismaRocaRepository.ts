@@ -12,6 +12,12 @@ export class PrismaRocaRepository implements RocaRepository{
     })
     return createPeao;
   }
+  async findMany(): Promise<Roca[] | null> {
+    
+    const findRocas = await prisma.roca.findMany()
+    
+    return findRocas
+  }
 
   async findByIsOpen(): Promise<Roca[]> {
     
